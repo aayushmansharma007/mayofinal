@@ -1,0 +1,739 @@
+/* Mobile Modal Stats */
+.mobile-modal-stats {
+  margin-top: 1rem;
+}
+
+.mobile-modal-stats h4 {
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.mobile-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.mobile-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mobile-stat-label {
+  color: var(--crunchyroll-text-gray);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.mobile-stat-value {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Enhanced Mobile Search Styles */
+.mobile-search-trigger {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-search-trigger:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.mobile-search-trigger:active {
+  transform: scale(0.98);
+}
+
+.mobile-search-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+.mobile-search-enhanced {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  transform: translateY(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-search-enhanced.expanded {
+  transform: translateY(0);
+}
+
+.mobile-search-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+}
+
+.mobile-search-input-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-search-icon-enhanced {
+  position: absolute;
+  left: 1rem;
+  color: var(--crunchyroll-light-gray);
+  font-size: 1rem;
+  z-index: 2;
+}
+
+.mobile-search-input-enhanced {
+  width: 100%;
+  padding: 0.875rem 1rem 0.875rem 2.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.mobile-search-input-enhanced:focus {
+  outline: none;
+  border-color: var(--crunchyroll-orange);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.1);
+}
+
+.mobile-search-input-enhanced::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+.mobile-search-clear {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--crunchyroll-light-gray);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-search-clear:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-search-loading {
+  position: absolute;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid var(--crunchyroll-orange);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.mobile-voice-search {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--crunchyroll-light-gray);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-voice-search:hover {
+  color: var(--crunchyroll-orange);
+  background: rgba(255, 102, 0, 0.1);
+}
+
+.mobile-voice-search.listening {
+  color: #ff4444;
+  animation: pulse 1s infinite;
+}
+
+.mobile-search-cancel {
+  background: none;
+  border: none;
+  color: var(--crunchyroll-orange);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.mobile-search-cancel:hover {
+  background: rgba(255, 102, 0, 0.1);
+}
+
+.mobile-search-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-search-results-enhanced {
+  animation: fadeInUp 0.3s ease;
+}
+
+.mobile-search-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-search-section-header h3 {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.mobile-results-count {
+  color: var(--crunchyroll-light-gray);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.mobile-search-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mobile-search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-search-result-item:hover {
+  background: rgba(255, 102, 0, 0.1);
+  border-color: rgba(255, 102, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+.mobile-search-result-item.selected {
+  background: rgba(255, 102, 0, 0.15);
+  border-color: var(--crunchyroll-orange);
+  box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.2);
+}
+
+.mobile-search-result-item:active {
+  transform: translateY(0);
+}
+
+.mobile-result-image {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.mobile-result-image img {
+  width: 60px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-result-status {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+}
+
+.mobile-result-status.releasing {
+  background: #00ff88;
+  animation: pulse 2s infinite;
+}
+
+.mobile-result-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mobile-result-title {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobile-result-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.mobile-result-rating,
+.mobile-result-year,
+.mobile-result-episodes {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--crunchyroll-light-gray);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.mobile-result-rating i {
+  color: #ffd700;
+  font-size: 0.7rem;
+}
+
+.mobile-result-genres {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.mobile-result-genre {
+  background: rgba(255, 102, 0, 0.2);
+  color: var(--crunchyroll-orange);
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 102, 0, 0.3);
+}
+
+.mobile-result-action {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: var(--crunchyroll-orange);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.mobile-result-action:hover {
+  background: #ff6b00;
+  transform: scale(1.1);
+}
+
+.mobile-search-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.mobile-empty-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: var(--crunchyroll-light-gray);
+  font-size: 2rem;
+}
+
+.mobile-search-empty h3 {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.mobile-search-empty p {
+  color: var(--crunchyroll-light-gray);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.mobile-search-suggestions {
+  animation: fadeInUp 0.3s ease;
+}
+
+.mobile-search-section {
+  margin-bottom: 2rem;
+}
+
+.mobile-search-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.mobile-search-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.mobile-search-chip:hover {
+  background: rgba(255, 102, 0, 0.2);
+  border-color: rgba(255, 102, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+.mobile-search-chip:active {
+  transform: translateY(0);
+}
+
+.mobile-search-chip.recent i {
+  color: var(--crunchyroll-light-gray);
+  font-size: 0.8rem;
+}
+
+.mobile-search-chip.popular i {
+  color: #ff6b6b;
+  font-size: 0.8rem;
+}
+
+.mobile-search-chip.category i {
+  color: #4ecdc4;
+  font-size: 0.8rem;
+}
+
+.mobile-search-chip.suggestion i {
+  color: #ffd700;
+  font-size: 0.8rem;
+}
+
+.mobile-clear-btn {
+  background: none;
+  border: none;
+  color: var(--crunchyroll-orange);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.mobile-clear-btn:hover {
+  background: rgba(255, 102, 0, 0.1);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile Quick Actions */
+.mobile-quick-actions {
+  position: fixed;
+  bottom: 100px;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 998;
+  transform: scale(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.mobile-quick-actions.show {
+  transform: scale(1);
+}
+
+.mobile-quick-action {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.mobile-quick-action:hover {
+  background: var(--crunchyroll-orange);
+  transform: scale(1.1);
+}
+
+/* Mobile Swipe Actions */
+.mobile-swipe-actions {
+  position: absolute;
+  top: 0;
+  right: -100px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1rem;
+  background: var(--crunchyroll-orange);
+  transition: right 0.3s ease;
+}
+
+.mobile-anime-card.swiped .mobile-swipe-actions {
+  right: 0;
+}
+
+.mobile-swipe-action {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+/* Mobile Performance Optimizations */
+.mobile-anime-card,
+.mobile-rec-card,
+.mobile-resume-card {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.mobile-content-slider {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Mobile Accessibility */
+.mobile-nav-item:focus,
+.mobile-anime-card:focus,
+.mobile-play-btn:focus {
+  outline: 2px solid var(--crunchyroll-orange);
+  outline-offset: 2px;
+}
+
+/* Mobile Dark Mode Enhancements */
+@media (prefers-color-scheme: dark) {
+  .mobile-search-input {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .mobile-header {
+    background: rgba(0, 0, 0, 0.98);
+  }
+}
+
+/* Mobile Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-anime-card,
+  .mobile-play-btn,
+  .mobile-nav-item {
+    transition: none;
+  }
+  
+  .loading-spinner {
+    animation: none;
+  }
+}
+
+/* Mobile High Contrast */
+@media (prefers-contrast: high) {
+  .mobile-anime-card {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .mobile-nav-item.active {
+    background: var(--crunchyroll-orange);
+    color: black;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .mobile-search-header {
+    padding: 0.75rem;
+  }
+  
+  .mobile-search-input-enhanced {
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .mobile-search-chip {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.85rem;
+  }
+  
+  .mobile-result-title {
+    font-size: 0.95rem;
+  }
+  
+  .mobile-result-meta {
+    gap: 0.5rem;
+  }
+  
+  .mobile-result-rating,
+  .mobile-result-year,
+  .mobile-result-episodes {
+    font-size: 0.75rem;
+  }
+  
+  .mobile-search-content {
+    padding: 0.75rem;
+  }
+  
+  .mobile-search-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .mobile-search-chips {
+    gap: 0.5rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .mobile-search-result-item:hover {
+    transform: none;
+  }
+  
+  .mobile-search-chip:hover {
+    transform: none;
+  }
+  
+  .mobile-search-result-item:active {
+    background: rgba(255, 102, 0, 0.2);
+    transform: scale(0.98);
+  }
+  
+  .mobile-search-chip:active {
+    background: rgba(255, 102, 0, 0.3);
+    transform: scale(0.95);
+  }
+  
+  .mobile-search-trigger:active {
+    transform: scale(0.95);
+  }
+}
+/* Mobile Video Player Styles - Removed to prevent conflicts */
+

@@ -1,0 +1,3170 @@
+:root {
+  --crunchyroll-orange: #FF6600;
+  --crunchyroll-dark-orange: #E55A00;
+  --crunchyroll-light-orange: #FF7A1A;
+  --crunchyroll-black: #000000;
+  --crunchyroll-dark-gray: #0F0F0F;
+  --crunchyroll-gray: #1A1A1A;
+  --crunchyroll-medium-gray: #2A2A2A;
+  --crunchyroll-light-gray: #B3B3B3;
+  --crunchyroll-white: #FFFFFF;
+  --crunchyroll-yellow: #F5C518;
+  --crunchyroll-text-gray: #C7C7C7;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--crunchyroll-orange) var(--crunchyroll-dark-gray);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--crunchyroll-dark-gray);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--crunchyroll-orange);
+  border-radius: 4px;
+}
+
+body {
+  background: var(--crunchyroll-black);
+  color: var(--crunchyroll-white);
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.App {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.netflix-header {
+  background: var(--crunchyroll-black);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 102, 0, 0.1);
+}
+
+.netflix-header > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.netflix-header.scrolled {
+  background: var(--crunchyroll-black);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.netflix-logo {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--crunchyroll-orange);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.netflix-logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-image {
+  height: 40px;
+  width: auto;
+  transition: transform 0.2s ease;
+}
+
+.logo-image:hover {
+  transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .logo-image {
+    height: 50px;
+  }
+}
+
+.nav-link {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: var(--crunchyroll-light-gray);
+  background: rgba(255, 102, 0, 0.1);
+}
+
+.nav-link-mobile {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  width: 100%;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-link-mobile:hover {
+  background: rgba(255, 102, 0, 0.2);
+  color: var(--crunchyroll-orange);
+}
+
+.mobile-menu {
+  background: rgba(0,0,0,0.95);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.header-icon-btn {
+  color: white;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.header-icon-btn:hover {
+  background: rgba(255,255,255,0.1);
+  transform: scale(1.1);
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  background: var(--crunchyroll-orange);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.user-avatar:hover {
+  border-color: white;
+  transform: scale(1.1);
+}
+
+.premium-btn {
+  background: linear-gradient(135deg, var(--crunchyroll-orange) 0%, var(--crunchyroll-dark-orange) 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 10px rgba(255, 102, 0, 0.3);
+}
+
+.premium-btn:hover {
+  background: linear-gradient(135deg, var(--crunchyroll-dark-orange) 0%, var(--crunchyroll-orange) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
+}
+
+.dropdown-btn {
+  position: relative;
+}
+
+.dropdown-btn i {
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-btn:hover i {
+  transform: rotate(180deg);
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+/* Popular Near You Section */
+.popular-near-you {
+  padding: 2rem 0;
+  margin-top: 2rem;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--crunchyroll-white);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--crunchyroll-text-gray);
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Legacy anime-grid-card styles for backward compatibility */
+.anime-grid-card {
+  background: var(--crunchyroll-gray);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.anime-grid-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 102, 0, 0.3);
+}
+
+.anime-card-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: var(--crunchyroll-medium-gray);
+}
+
+.anime-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.anime-grid-card:hover .anime-card-image img {
+  transform: scale(1.1);
+}
+
+.anime-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(2px);
+}
+
+.anime-grid-card:hover .anime-card-overlay {
+  opacity: 1;
+}
+
+.anime-play-btn {
+  background: var(--crunchyroll-orange);
+  color: white;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(255, 102, 0, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.anime-play-btn:hover {
+  background: var(--crunchyroll-dark-orange);
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(255, 102, 0, 0.6);
+}
+
+.anime-card-info {
+  padding: 1rem;
+  background: var(--crunchyroll-gray);
+}
+
+.anime-card-title {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.anime-grid-card:hover .anime-card-title {
+  color: var(--crunchyroll-orange);
+}
+
+.anime-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.anime-card-type {
+  color: var(--crunchyroll-text-gray);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.anime-card-rating {
+  color: var(--crunchyroll-yellow);
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(245, 197, 24, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(245, 197, 24, 0.3);
+}
+
+@media (max-width: 768px) {
+  .anime-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .crunchyroll-card {
+    min-width: 250px;
+  }
+  
+  .crunchyroll-overlay-title {
+    font-size: 1rem;
+  }
+  
+  .crunchyroll-play-btn {
+    width: 56px;
+    height: 56px;
+    font-size: 1.3rem;
+  }
+  
+  .anime-play-btn {
+    width: 56px;
+    height: 56px;
+    font-size: 1.3rem;
+  }
+}
+
+.search-toggle {
+  color: white;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.search-toggle:hover {
+  background: rgba(255,255,255,0.1);
+  transform: scale(1.1);
+}
+
+.search-wrapper {
+  transition: all 0.3s ease;
+}
+
+.search-wrapper.show {
+  display: block;
+}
+
+.search-wrapper {
+  position: relative;
+}
+
+@media (max-width: 767px) {
+  .search-wrapper.show {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 280px;
+    margin-top: 0.5rem;
+    background: rgba(0,0,0,0.95);
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  
+  .search-toggle {
+    display: flex;
+  }
+}
+
+@media (min-width: 768px) {
+  .search-toggle {
+    display: none;
+  }
+  
+  .search-wrapper {
+    display: block !important;
+  }
+}
+
+.hero-banner {
+  height: 80vh;
+  margin-top: 80px;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1920&h=1080&fit=crop') center/cover;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: background-image 0.5s ease;
+}
+
+.hero-content {
+  max-width: 50%;
+  padding: 0 4rem;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  line-height: 1.1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: var(--crunchyroll-light-gray);
+}
+
+/* Crunchyroll Hero Banner */
+.crunchyroll-hero-banner {
+  height: 100vh;
+  margin-top: 80px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: background-image 0.5s ease;
+}
+
+.hero-content-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.hero-left-content {
+  max-width: 600px;
+}
+
+.anime-logo {
+  margin-bottom: 1.5rem;
+}
+
+.hero-anime-title {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--crunchyroll-white);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -2px;
+}
+
+.anime-metadata {
+  margin-bottom: 1.5rem;
+}
+
+.metadata-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.rating-badge {
+  background: var(--crunchyroll-orange);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.metadata-item {
+  color: var(--crunchyroll-text-gray);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.star-rating {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.star-rating i {
+  color: #444;
+  font-size: 1.2rem;
+}
+
+.star-rating i.filled {
+  color: var(--crunchyroll-yellow);
+}
+
+.average-rating {
+  color: var(--crunchyroll-text-gray);
+  font-size: 0.9rem;
+}
+
+.hero-anime-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--crunchyroll-white);
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.start-watching-btn {
+  background: var(--crunchyroll-orange);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.start-watching-btn:hover {
+  background: var(--crunchyroll-dark-orange);
+  transform: translateY(-2px);
+}
+
+.add-to-list-btn,
+.share-btn,
+.more-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.add-to-list-btn:hover,
+.share-btn:hover,
+.more-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+.anime-info-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-tag {
+  color: var(--crunchyroll-text-gray);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .crunchyroll-hero-banner {
+    height: 70vh;
+  }
+  
+  .hero-anime-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+  
+  .start-watching-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* YouTube-like Video Player */
+.youtube-video-player {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--crunchyroll-black);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Crunchyroll Video Player */
+.crunchyroll-video-player {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--crunchyroll-black);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.youtube-player-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: var(--crunchyroll-black);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 70px;
+  flex-shrink: 0;
+}
+
+.crunchyroll-player-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: var(--crunchyroll-black);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 80px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header-content {
+  flex: 1;
+  margin-left: 2rem;
+}
+
+.video-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+.anime-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 0.25rem 0;
+}
+
+.episode-info {
+  color: var(--crunchyroll-text-gray);
+  font-size: 1rem;
+}
+
+.episode-label {
+  font-weight: 600;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.header-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.youtube-main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  height: calc(100vh - 70px);
+}
+
+.youtube-video-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 1rem;
+  padding-right: 0;
+}
+
+.youtube-episodes-sidebar {
+  width: 420px;
+  min-width: 420px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
+  border-left: 1px solid rgba(255, 102, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.video-container {
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.video-iframe {
+  width: 100%;
+  height: 60vh;
+  border: none;
+}
+
+.video-info {
+  margin-bottom: 1.5rem;
+}
+
+.video-title-main {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.video-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.episode-info {
+  color: var(--crunchyroll-text-gray);
+  font-size: 0.9rem;
+}
+
+.video-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.action-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.action-btn.active {
+  background: var(--crunchyroll-orange);
+  border-color: var(--crunchyroll-orange);
+}
+
+.video-description {
+  color: var(--crunchyroll-text-gray);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.video-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: rgba(255, 102, 0, 0.2);
+  color: var(--crunchyroll-orange);
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.episodes-header {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid rgba(255, 102, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 102, 0, 0.15) 0%, rgba(255, 102, 0, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.episodes-header h3 {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.episodes-count {
+  color: rgba(255, 102, 0, 0.8);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.episode-input-section {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 102, 0, 0.2);
+  background: rgba(255, 102, 0, 0.05);
+}
+
+.episode-input-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.episode-input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 102, 0, 0.3);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.episode-input:focus {
+  outline: none;
+  border-color: var(--crunchyroll-orange);
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.2);
+}
+
+.episode-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.episode-go-btn {
+  background: var(--crunchyroll-orange);
+  border: none;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.episode-go-btn:hover {
+  background: var(--crunchyroll-dark-orange);
+  transform: scale(1.05);
+}
+
+.episodes-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  /* Prevent reload issues on mobile */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  will-change: scroll-position;
+  /* Improve performance */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.episode-item {
+  display: flex;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  min-height: 75px;
+  background: transparent;
+  border-radius: 6px;
+  margin: 0 0.5rem 0.25rem 0.5rem;
+  /* Prevent layout shifts */
+  contain: layout style paint;
+  /* Improve touch performance */
+  touch-action: manipulation;
+}
+
+.episode-item:hover {
+  background: rgba(255, 102, 0, 0.08);
+  transform: translateX(4px);
+  border-left: 3px solid var(--crunchyroll-orange);
+}
+
+.episode-item.active {
+  background: rgba(255, 102, 0, 0.15);
+  border: 1px solid rgba(255, 102, 0, 0.4);
+  box-shadow: 0 2px 8px rgba(255, 102, 0, 0.2);
+}
+
+.episode-item.next {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.episode-thumbnail {
+  position: relative;
+  width: 110px;
+  height: 62px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+  background: var(--crunchyroll-gray);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.episode-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.episode-duration {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  backdrop-filter: blur(5px);
+}
+
+.play-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--crunchyroll-orange);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+.next-indicator {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: linear-gradient(45deg, #ff6600, #ff8533);
+  color: white;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.episode-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.episode-title {
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.2;
+}
+
+.episode-description {
+  color: var(--crunchyroll-text-gray);
+  font-size: 0.75rem;
+  line-height: 1.2;
+  margin: 0 0 0.4rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.episode-meta {
+  display: flex;
+  gap: 0.4rem;
+  font-size: 0.65rem;
+  color: rgba(179, 179, 179, 0.8);
+}
+
+.recommendations-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+}
+
+.recommendations-section h3 {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.recommendation-item {
+  display: flex;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+.recommendation-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.rec-thumbnail {
+  width: 120px;
+  height: 68px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.rec-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rec-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.rec-title {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.rec-meta {
+  color: var(--crunchyroll-text-gray);
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.player-content {
+  flex: 1;
+  padding: 2rem;
+  background: var(--crunchyroll-black);
+}
+
+.episode-section {
+  margin-bottom: 3rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.section-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.section-toggle:hover {
+  color: var(--crunchyroll-orange);
+}
+
+.episode-controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.sort-btn,
+.options-btn {
+  background: none;
+  border: none;
+  color: var(--crunchyroll-text-gray);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.sort-btn:hover,
+.options-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.episodes-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.episode-card {
+  background: var(--crunchyroll-gray);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.episode-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.episode-card.active {
+  border-color: var(--crunchyroll-orange);
+}
+
+.episode-thumbnail {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.episode-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.episode-duration {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.premium-badge {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  background: var(--crunchyroll-orange);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--crunchyroll-orange);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.episode-info-card {
+  padding: 1rem;
+  position: relative;
+}
+
+.episode-series {
+  color: var(--crunchyroll-text-gray);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.episode-title-card {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.episode-type {
+  color: var(--crunchyroll-text-gray);
+  font-size: 0.9rem;
+}
+
+.episode-menu {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--crunchyroll-text-gray);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.episode-menu:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.server-section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.server-title {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.server-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.server-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 100px;
+}
+
+.server-button:hover {
+  background: var(--crunchyroll-medium-gray);
+}
+
+.server-button.active {
+  border-color: var(--crunchyroll-orange);
+  background: rgba(255, 102, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.server-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.server-quality {
+  font-size: 0.7rem;
+  color: var(--crunchyroll-text-gray);
+}
+
+.more-like-this {
+  margin-top: 3rem;
+}
+
+.section-title-large {
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.recommendations-slider {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.recommendation-item {
+  background: var(--crunchyroll-gray);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.recommendation-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.rec-image {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+
+.rec-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.recommendation-item:hover .rec-image img {
+  transform: scale(1.05);
+}
+
+.rec-play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.recommendation-item:hover .rec-play-overlay {
+  opacity: 1;
+}
+
+.rec-details {
+  padding: 1rem;
+}
+
+.rec-title {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.rec-type {
+  color: var(--crunchyroll-text-gray);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .youtube-main-content {
+    flex-direction: column;
+  }
+  
+  .youtube-episodes-sidebar {
+    width: 100%;
+    max-height: 40vh;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .youtube-video-section {
+    padding: 0.5rem;
+  }
+  
+  .video-iframe {
+    height: 50vh;
+  }
+  
+  .video-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .episode-item {
+    padding: 0.5rem;
+  }
+  
+  .episode-thumbnail {
+    width: 100px;
+    height: 56px;
+    margin-right: 0.5rem;
+  }
+  
+  .crunchyroll-player-header {
+    padding: 1rem;
+  }
+  
+  .header-content {
+    margin-left: 1rem;
+  }
+  
+  .anime-title {
+    font-size: 1.2rem;
+  }
+  
+  .player-content {
+    padding: 1rem;
+  }
+  
+  .episodes-grid-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .server-buttons {
+    justify-content: center;
+  }
+  
+  .recommendations-slider {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+.netflix-btn {
+  background: var(--crunchyroll-orange);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 1rem;
+}
+
+.netflix-btn:hover {
+  background: var(--crunchyroll-dark-orange);
+  transform: scale(1.05);
+}
+
+.netflix-btn-secondary {
+  background: rgba(109, 109, 110, 0.7);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.netflix-btn-secondary:hover {
+  background: rgba(109, 109, 110, 0.4);
+}
+
+.content-row {
+  margin: 3rem 0;
+  padding: 0 2rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.content-row:last-child {
+  margin-bottom: 0;
+}
+
+.row-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--crunchyroll-white);
+}
+
+.content-slider {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1rem 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.content-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.content-section {
+  position: relative;
+  width: 100%;
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.8);
+  border: none;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.slider-arrow:hover {
+  background: var(--crunchyroll-orange);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-arrow.left {
+  left: 10px;
+}
+
+.slider-arrow.right {
+  right: 10px;
+}
+
+/* Crunchyroll-style Anime Cards */
+.crunchyroll-card {
+  min-width: 200px;
+  max-width: 200px;
+  background: var(--crunchyroll-gray);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+}
+
+.crunchyroll-card:last-child {
+  margin-right: 0;
+}
+
+.crunchyroll-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 102, 0, 0.3);
+}
+
+.crunchyroll-card-image {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--crunchyroll-medium-gray);
+}
+
+.crunchyroll-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.crunchyroll-card:hover .crunchyroll-card-image img {
+  transform: scale(1.1);
+}
+
+/* Premium Badge */
+.crunchyroll-premium-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #000;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+  z-index: 5;
+}
+
+.crunchyroll-premium-badge i {
+  font-size: 0.6rem;
+}
+
+/* Episode Badge */
+.crunchyroll-episode-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  z-index: 5;
+}
+
+/* Play Overlay */
+.crunchyroll-play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(2px);
+}
+
+.crunchyroll-card:hover .crunchyroll-play-overlay {
+  opacity: 1;
+}
+
+.crunchyroll-play-btn {
+  background: var(--crunchyroll-orange);
+  color: white;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(255, 102, 0, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.crunchyroll-play-btn:hover {
+  background: var(--crunchyroll-dark-orange);
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(255, 102, 0, 0.6);
+}
+
+.crunchyroll-overlay-content {
+  text-align: center;
+  padding: 0 1rem;
+  max-width: 100%;
+}
+
+.crunchyroll-overlay-title {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.crunchyroll-overlay-meta {
+  color: var(--crunchyroll-text-gray);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.crunchyroll-overlay-genres {
+  color: var(--crunchyroll-yellow);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.crunchyroll-overlay-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: rgba(255, 102, 0, 0.9);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255, 102, 0, 0.3);
+}
+
+.crunchyroll-overlay-rating i {
+  font-size: 0.7rem;
+  color: var(--crunchyroll-yellow);
+}
+
+/* Card Info Section */
+.crunchyroll-card-info {
+  padding: 1rem;
+  background: var(--crunchyroll-gray);
+}
+
+.crunchyroll-card-title {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.crunchyroll-card:hover .crunchyroll-card-title {
+  color: var(--crunchyroll-orange);
+}
+
+.crunchyroll-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.crunchyroll-card-type {
+  color: var(--crunchyroll-text-gray);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.crunchyroll-card-status {
+  color: var(--crunchyroll-yellow);
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(245, 197, 24, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(245, 197, 24, 0.3);
+}
+
+/* Legacy content-card styles for backward compatibility */
+.content-card {
+  min-width: 280px;
+  background: var(--crunchyroll-gray);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.content-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 102, 0, 0.3);
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--crunchyroll-orange);
+  color: white;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(255, 102, 0, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.content-card:hover .play-icon {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.content-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-card:hover img {
+  transform: scale(1.1);
+}
+
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.95));
+  padding: 1rem;
+  opacity: 1;
+}
+
+.card-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-info {
+  font-size: 0.9rem;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.card-genres {
+  font-size: 0.8rem;
+  color: var(--crunchyroll-yellow);
+  margin-bottom: 0.5rem;
+}
+
+.card-description {
+  font-size: 0.8rem;
+  color: var(--crunchyroll-light-gray);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-rating {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 102, 0, 0.8);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.search-container {
+  position: relative;
+  max-width: 400px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 3rem;
+  background: rgba(0,0,0,0.7);
+  border: 2px solid transparent;
+  border-radius: 4px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--crunchyroll-orange);
+  background: rgba(0,0,0,0.9);
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.95);
+  border-radius: 0 0 8px 8px;
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 100;
+  display: none;
+}
+
+.search-results.show {
+  display: block;
+}
+
+.search-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: background 0.2s ease;
+}
+
+.search-item:hover {
+  background: rgba(255, 102, 0, 0.2);
+}
+
+.search-item img {
+  width: 60px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 1rem;
+}
+
+.search-item-info h4 {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.search-item-info p {
+  font-size: 0.9rem;
+  color: var(--crunchyroll-light-gray);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--crunchyroll-light-gray);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--crunchyroll-dark-gray);
+  border-radius: 8px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-header {
+  position: relative;
+  height: 400px;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(20,20,20,1));
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0,0,0,0.8);
+  border: 2px solid white;
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.4rem;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: var(--crunchyroll-orange);
+  transform: scale(1.1);
+}
+
+.modal-info {
+  padding: 2rem;
+}
+
+.episode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.episode-btn {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  min-width: 50px;
+}
+
+.episode-btn:hover {
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.05);
+  border-color: rgba(255,255,255,0.4);
+}
+
+.episode-btn.active {
+  background: var(--crunchyroll-orange);
+  border-color: var(--crunchyroll-orange);
+  transform: scale(1.05);
+}
+
+.server-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.server-btn {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.server-btn:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.4);
+}
+
+.server-btn.active {
+  background: var(--crunchyroll-orange);
+  border-color: var(--crunchyroll-orange);
+  transform: translateY(-2px);
+}
+
+.video-player {
+  width: 100%;
+  height: 400px;
+  background: black;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.video-player iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    max-width: 90%;
+    padding: 0 2rem;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content-row {
+    padding: 0 2rem;
+  }
+  
+  .content-card {
+    min-width: 180px;
+    max-width: 180px;
+  }
+  
+  .crunchyroll-card {
+    min-width: 180px;
+    max-width: 180px;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.video-player-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--crunchyroll-black);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-player-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  margin-right: 2rem;
+  font-weight: 500;
+}
+
+.back-btn:hover {
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.05);
+  border-color: rgba(255,255,255,0.3);
+}
+
+.video-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+  flex: 1;
+  margin-left: 2rem;
+}
+
+.my-list-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.my-list-btn:hover {
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.05);
+  border-color: rgba(255,255,255,0.3);
+}
+
+.video-player-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  padding: 1rem;
+}
+
+.main-video-player {
+  width: 100%;
+  height: 100%;
+  max-height: 120vh;
+  border: none;
+  border-radius: 8px;
+}
+
+.video-controls {
+  padding: 2rem;
+  background: linear-gradient(180deg, var(--crunchyroll-dark-gray) 0%, var(--crunchyroll-black) 100%);
+  max-height: 250px;
+  overflow-y: auto;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.episodes-section, .servers-section {
+  margin-bottom: 2rem;
+}
+
+.episodes-section h3, .servers-section h3 {
+  color: white;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.episodes-grid {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  max-height: 60px;
+  overflow-y: auto;
+}
+
+.servers-grid {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.recommendations-section {
+  margin-top: 2.5rem;
+}
+
+.recommendations-section h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.anime-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--crunchyroll-black);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.anime-page-header {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  margin-left: 2rem;
+}
+
+.anime-page-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.anime-page-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.anime-page-card:hover {
+  transform: scale(1.05);
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.anime-card-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.anime-card-image img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.anime-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.anime-page-card:hover .anime-card-overlay {
+  opacity: 1;
+}
+
+.anime-page-card:hover .anime-card-image img {
+  transform: scale(1.1);
+}
+
+.anime-play-btn {
+  background: rgba(255,255,255,0.9);
+  color: black;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+}
+
+.anime-play-btn:hover {
+  background: white;
+  transform: scale(1.1);
+}
+
+.anime-card-info {
+  padding: 1.5rem;
+}
+
+.anime-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.75rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.3;
+}
+
+.anime-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.anime-card-rating {
+  font-size: 1.1rem;
+  color: var(--crunchyroll-yellow);
+  font-weight: 600;
+}
+
+.anime-card-genres {
+  font-size: 1rem;
+  color: var(--crunchyroll-light-gray);
+  font-weight: 400;
+}
+
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.recommendation-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.recommendation-card:hover {
+  transform: scale(1.08);
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.rec-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.rec-image-container img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.rec-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.recommendation-card:hover .rec-overlay {
+  opacity: 1;
+}
+
+.recommendation-card:hover .rec-image-container img {
+  transform: scale(1.1);
+}
+
+.rec-play-btn {
+  background: rgba(255,255,255,0.9);
+  color: black;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.rec-play-btn:hover {
+  background: white;
+  transform: scale(1.1);
+}
+
+.remove-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.recommendation-card:hover .remove-btn {
+  opacity: 1;
+}
+
+.remove-btn:hover {
+  background: var(--crunchyroll-orange);
+  transform: scale(1.1);
+}
+
+.rec-info {
+  padding: 1.5rem;
+}
+
+.rec-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.75rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.3;
+}
+
+.rec-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rec-rating {
+  font-size: 1rem;
+  color: var(--crunchyroll-yellow);
+  font-weight: 600;
+}
+
+.rec-genres {
+  font-size: 0.9rem;
+  color: var(--crunchyroll-light-gray);
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .video-player-header {
+    padding: 1rem;
+  }
+  
+  .back-btn {
+    margin-right: 1rem;
+  }
+  
+  .video-title {
+    font-size: 1.2rem;
+  }
+  
+  .video-controls {
+    padding: 1rem;
+  }
+  
+  .main-video-player {
+    max-height: 60vh;
+  }
+}
+
+
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.space-x-8 > * + * {
+  margin-left: 2rem;
+}
+
+.space-x-6 > * + * {
+  margin-left: 1.5rem;
+}
+
+.space-x-4 > * + * {
+  margin-left: 1rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.md\:flex {
+  display: flex;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-gray-300 {
+  color: #d1d5db;
+}
+
+.text-gray-400 {
+  color: #9ca3af;
+}
+
+.hover\:text-gray-300:hover {
+  color: #d1d5db;
+}
+
+.transition-colors {
+  transition: color 0.15s ease-in-out;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.h-8 {
+  height: 2rem;
+}
+
+.bg-red-600 {
+  background-color: #dc2626;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.pb-16 {
+  padding-bottom: 4rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.lg\:grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.lg\:col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .lg\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+  
+  .lg\:flex {
+    display: flex;
+  }
+  
+  .lg\:hidden {
+    display: none;
+  }
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.space-x-3 > * + * {
+  margin-left: 0.75rem;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.space-y-2 > * + * {
+  margin-top: 0.5rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.md\:px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.md\:py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.md\:space-x-8 > * + * {
+  margin-left: 2rem;
+}
+
+.md\:space-x-4 > * + * {
+  margin-left: 1rem;
+}
+
+.md\:text-xl {
+  font-size: 1.25rem;
+}
+
+.md\:text-2xl {
+  font-size: 1.5rem;
+}
+
+.md\:block {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .md\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  .md\:py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .md\:space-x-8 > * + * {
+    margin-left: 2rem;
+  }
+  
+  .md\:space-x-4 > * + * {
+    margin-left: 1rem;
+  }
+  
+  .md\:text-xl {
+    font-size: 1.25rem;
+  }
+  
+  .md\:text-2xl {
+    font-size: 1.5rem;
+  }
+  
+  .md\:block {
+    display: block;
+  }
+  
+  .md\:flex {
+    display: flex;
+  }
+}
+
+.resume-progress {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  backdrop-filter: blur(5px);
+}
+
+.text-center {
+  text-align: center;
+}
+/* Remove button for all card types */
+.remove-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.9);
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  z-index: 10;
+  opacity: 0;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.crunchyroll-card:hover .remove-btn,
+.anime-page-card:hover .remove-btn,
+.recommendation-card:hover .remove-btn {
+  opacity: 1;
+}
+
+.remove-btn:hover {
+  background: var(--crunchyroll-orange);
+  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 2px 8px rgba(255, 102, 0, 0.4);
+}
+
+/* Mobile episode input styles */
+.mobile-episode-input-section {
+  padding: 1rem;
+  background: rgba(255, 102, 0, 0.05);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.mobile-episode-input-form {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.mobile-episode-input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 102, 0, 0.3);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.mobile-episode-input:focus {
+  outline: none;
+  border-color: var(--crunchyroll-orange);
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.2);
+}
+
+.mobile-episode-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.mobile-episode-go-btn {
+  background: var(--crunchyroll-orange);
+  border: none;
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(255, 102, 0, 0.3);
+}
+
+.mobile-episode-go-btn:hover {
+  background: var(--crunchyroll-dark-orange);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4);
+}
